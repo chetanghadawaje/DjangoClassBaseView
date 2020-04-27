@@ -3,6 +3,7 @@ from django.views import View
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import Frm_Customer
+from .models import customerModal
 
 
 class MyView(View):
@@ -19,7 +20,8 @@ class CustomerView(View):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form': form})
+        objects = customerModal.objects.all()
+        return render(request, self.template_name, {'form': form, 'objects': objects})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
