@@ -10,8 +10,9 @@
         {{ form }}
         <button type="submit">Create</button>
     </form>
+
     {% for object in objects %}
-        {{object.cust_id}} - {{object.cust_name}} - {{object.site_name}} - {{object.phone_no}}<br>
+        {{object.cust_id}} - {{object.cust_name}} - {{object.site_name}} - {{object.phone_no}} - <a href="">Edit</a><br>
     {% endfor %}
 </body>
 </html>

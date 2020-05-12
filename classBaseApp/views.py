@@ -4,13 +4,17 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import Frm_Customer
 from .models import customerModal
+from django.views.generic import ListView
 
 
 class MyView(View):
 
     def get(self, request):
         # only static call
-        return HttpResponse('Hi this is get method in class base view.')
+        response = """
+                    Hi this is get method in class base view.
+                """
+        return HttpResponse(response)
 
 
 class CustomerView(View):
@@ -29,3 +33,11 @@ class CustomerView(View):
             form.save()
             return HttpResponseRedirect('/customer/')
         return render(request, self.template_name, {'form': form})
+
+    def put(self, request):
+        print("PUT")
+
+
+class CustomerListView(ListView):
+    model = customerModal
+        
