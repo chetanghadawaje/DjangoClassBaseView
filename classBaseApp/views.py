@@ -5,6 +5,10 @@ from django.shortcuts import render
 from .forms import Frm_Customer
 from .models import customerModal
 from django.views.generic import ListView
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger('mylog')
 
 
 class MyView(View):
@@ -25,6 +29,7 @@ class CustomerView(View):
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial=self.initial)
         objects = customerModal.objects.all()
+        logger.info("Test")
         return render(request, self.template_name, {'form': form, 'objects': objects})
 
     def post(self, request, *args, **kwargs):
@@ -32,12 +37,10 @@ class CustomerView(View):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/customer/')
+        logger.error('Something went wrong!')
         return render(request, self.template_name, {'form': form})
-
-    def put(self, request):
-        print("PUT")
 
 
 class CustomerListView(ListView):
     model = customerModal
-        
+

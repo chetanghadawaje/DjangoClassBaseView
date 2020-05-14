@@ -17,3 +17,9 @@
 
 **Location:** _adminCutApp/admin.py_ 
 -> Line 41 to 42 is add method for checkbox selection in upper drop-down
+
+#Logging
+**Location:** _setting.py_
+
+**Location:** _classBaseApp/views.py_
+-> line number 12, 32, 40 for add log in .log file.

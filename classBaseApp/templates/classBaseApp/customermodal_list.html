@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customer List</title>
+</head>
+<body>
+	<ul>
+        {% for custmoner in object_list %}
+            <li>{{ custmoner.cust_name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
